@@ -3,16 +3,43 @@ import type { CityLog, NewCityLogInput, ProfileId, VenueType } from '../types';
 
 const LOCAL_STORAGE_KEY = 'relief_atlas_city_logs_v1';
 
-const supabaseUrl = (import.meta.env.VITE_SUPABASE_URL as string | undefined)?.trim() || '';
-const supabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined)?.trim() || '';
+const rawSupabaseUrl = ((import.meta.env.VITE_SUPABASE_URL as string | undefined) || '')
+  .trim()
+  .replace(/^['"]|['"]$/g, '');
+const supabaseAnonKey = ((import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined) || '')
+  .trim()
+  .replace(/^['"]|['"]$/g, '');
+
+let supabaseUrl = '';
+let supabaseConfigError: string | null = null;
+
+if (rawSupabaseUrl) {
+  try {
+    const parsed = new URL(rawSupabaseUrl);
+    if (parsed.hostname === 'supabase.com' || parsed.hostname === 'www.supabase.com') {
+      supabaseConfigError =
+        'VITE_SUPABASE_URL points to supabase.com dashboard. Replace it in GitHub Secrets with your Project API URL (https://<project-ref>.supabase.co) from Project Settings -> Data API.';
+    } else {
+      // Strip any accidental extra path (e.g. /rest/v1) so createClient always gets the clean origin
+      supabaseUrl = parsed.origin;
+    }
+  } catch {
+    supabaseConfigError =
+      'VITE_SUPABASE_URL is not a valid URL. Expected https://<project-ref>.supabase.co.';
+  }
+}
 
 let supabaseClient: SupabaseClient | null = null;
-if (supabaseUrl && supabaseAnonKey) {
+if (supabaseUrl && supabaseAnonKey && !supabaseConfigError) {
   supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
 }
 
 export function isSupabaseConfigured(): boolean {
   return supabaseClient !== null;
+}
+
+export function getSupabaseConfigError(): string | null {
+  return supabaseConfigError;
 }
 
 interface SupabaseRow {
