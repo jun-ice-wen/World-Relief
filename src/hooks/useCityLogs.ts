@@ -4,6 +4,7 @@ import {
   bulkInsertLogs,
   createCityLog,
   fetchAllLogs,
+  getSupabaseConfigError,
   isSupabaseConfigured,
   removeCityLog,
   subscribeToRemoteLogs,
@@ -29,7 +30,7 @@ export function useCityLogs() {
 
   const refresh = useCallback(async () => {
     try {
-      setError(null);
+      setError(getSupabaseConfigError());
       const data = await fetchAllLogs();
       setLogs(data);
     } catch (err) {
