@@ -1,0 +1,6 @@
+{
+  "name": "Croc & Hamster's World Relief Atlas",
+  "description": "A playful mobile-first field journal and interactive world map for Mr Crocodile and Ms Hamster to plot dated city visits, filter by timeline, and view consolidated travel stats.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

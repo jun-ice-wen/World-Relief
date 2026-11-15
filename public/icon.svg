@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#F7F3EA" />
+  <circle cx="256" cy="256" r="184" fill="#FFFDF9" stroke="#2B6E4F" stroke-width="18" />
+  <circle cx="256" cy="256" r="154" fill="none" stroke="#E2D9C8" stroke-width="6" stroke-dasharray="14 10" />
+  <!-- Left half Crocodile emerald crest -->
+  <path d="M256 98 A158 158 0 0 0 256 414 Z" fill="#2B6E4F" opacity="0.14" />
+  <!-- Right half Hamster terracotta crest -->
+  <path d="M256 98 A158 158 0 0 1 256 414 Z" fill="#D4652A" opacity="0.14" />
+  <!-- Map pin silhouette -->
+  <path d="M256 122 C202 122 162 164 162 216 C162 284 256 386 256 386 C256 386 350 284 350 216 C350 164 310 122 256 122 Z" fill="#2B6E4F" />
+  <path d="M256 122 C310 122 350 164 350 216 C350 284 256 386 256 386 L256 122 Z" fill="#D4652A" />
+  <circle cx="256" cy="214" r="48" fill="#FFFDF9" />
+  <circle cx="240" cy="214" r="13" fill="#2B6E4F" />
+  <circle cx="272" cy="214" r="13" fill="#D4652A" />
+</svg>

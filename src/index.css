@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@layer base {
+  :root {
+    --bg-paper: #F7F3EA;
+    --bg-card: #FFFDF9;
+    --border-sepia: #E2D9C8;
+    --ink-primary: #1E2420;
+    --ink-muted: #5C665E;
+    --croc-accent: #2B6E4F;
+    --hamster-accent: #D4652A;
+    --both-accent: #44549E;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    background-color: #F7F3EA;
+    color: #1E2420;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.font-display {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.font-mono-tabular {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.pb-safe {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+
+/* Warm field-journal tint over CARTO Voyager map tiles */
+.field-journal-tiles .leaflet-tile-pane {
+  filter: sepia(0.16) saturate(0.92) contrast(0.98) brightness(1.01);
+}
+
+.leaflet-container {
+  background-color: #EBE4D3 !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px !important;
+  background: rgba(247, 243, 234, 0.78) !important;
+  color: #5C665E !important;
+  backdrop-filter: blur(4px);
+}
+
+.custom-atlas-marker {
+  background: transparent;
+  border: none;
+}
+
+/* Hide scrollbars cleanly on horizontal year ribbons */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
